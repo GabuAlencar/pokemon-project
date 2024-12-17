@@ -2,9 +2,7 @@ import { Button } from "./components/ui/button";
 import Logo from "/src/assets/pokemon-logo.svg";
 import { Input } from "./components/ui/input";
 import React, { useEffect, useState } from "react";
-import api from "./services/api.js";
-import axios from "axios";
-import pokemonData from "./services/teste.ts";
+import api from "./services/api.ts";
 
 import {
   Select,
@@ -29,7 +27,7 @@ function App() {
 
   useEffect(() => {
     api
-      .get("/pokemon/pikachu")
+      .get("/pokemon/ditto")
       .then((response) => setItem(response.data))
       .catch((err) => {
         console.error("Ops! Ocorreu um erro: " + err);
@@ -49,9 +47,6 @@ function App() {
   return (
     <>
       <div id="app" className="bg-custom-gradient h-screen w-full">
-        <p>Nome: {item?.name || "Carregando..."}</p>
-        <p>Peso: {item?.weight || "Carregando..."}</p>
-
         <div className="flex items-center justify-center p-8">
           <img
             src={Logo}
@@ -103,127 +98,199 @@ function App() {
         <div className="flex justify-center items-center">
           <div className="pokemonList-Container grid grid-cols-3 gap-4">
             <div className="pokemonList-Item">
+              {isModalOpen && <Modal onClose={closeModal}></Modal>}
+
               <Button
+                onClick={openModal}
                 className="text-gray-900 bg-sky-100 hover:bg-sky-100 w-[400px] h-[40px] p-4 rounded transition-transform transform hover:-translate-y-2 hover:shadow-lg"
-                onclick={openModal}
               >
                 Bulbasaur
               </Button>
             </div>
+
             <div className="pokemonList-Item">
-              <Button className="text-gray-900 bg-sky-100 hover:bg-sky-100 w-[400px] h-[40px] p-4 rounded transition-transform transform hover:-translate-y-2 hover:shadow-lg">
+              <Button
+                onClick={openModal}
+                className="text-gray-900 bg-sky-100 hover:bg-sky-100 w-[400px] h-[40px] p-4 rounded transition-transform transform hover:-translate-y-2 hover:shadow-lg"
+              >
                 Ivysaur
               </Button>
             </div>
             <div className="pokemonList-Item">
-              <Button className="text-gray-900 bg-sky-100 hover:bg-sky-100 w-[400px] h-[40px] p-4 rounded transition-transform transform hover:-translate-y-2 hover:shadow-lg">
+              <Button
+                className="text-gray-900 bg-sky-100 hover:bg-sky-100 w-[400px] h-[40px] p-4 rounded transition-transform transform hover:-translate-y-2 hover:shadow-lg"
+                onClick={openModal}
+              >
                 Venusaur
               </Button>
             </div>
             <div className="pokemonList-Item">
-              <Button className="text-gray-900 bg-sky-100 hover:bg-sky-100 w-[400px] h-[40px] p-4 rounded transition-transform transform hover:-translate-y-2 hover:shadow-lg">
+              <Button
+                onClick={openModal}
+                className="text-gray-900 bg-sky-100 hover:bg-sky-100 w-[400px] h-[40px] p-4 rounded transition-transform transform hover:-translate-y-2 hover:shadow-lg"
+              >
                 Charmander
               </Button>
             </div>
             <div className="pokemonList-Item">
-              <Button className="text-gray-900 bg-sky-100 hover:bg-sky-100 w-[400px] h-[40px] p-4 rounded transition-transform transform hover:-translate-y-2 hover:shadow-lg">
+              <Button
+                onClick={openModal}
+                className="text-gray-900 bg-sky-100 hover:bg-sky-100 w-[400px] h-[40px] p-4 rounded transition-transform transform hover:-translate-y-2 hover:shadow-lg"
+              >
                 Charmeleon
               </Button>
             </div>
             <div className="pokemonList-Item">
-              <Button className="text-gray-900 bg-sky-100 hover:bg-sky-100 w-[400px] h-[40px] p-4 rounded transition-transform transform hover:-translate-y-2 hover:shadow-lg">
+              <Button
+                onClick={openModal}
+                className="text-gray-900 bg-sky-100 hover:bg-sky-100 w-[400px] h-[40px] p-4 rounded transition-transform transform hover:-translate-y-2 hover:shadow-lg"
+              >
                 Charizard
               </Button>
             </div>
 
             <div className="pokemonList-Item">
-              <Button className="text-gray-900 bg-sky-100 hover:bg-sky-100 w-[400px] h-[40px] p-4 rounded transition-transform transform hover:-translate-y-2 hover:shadow-lg">
+              <Button
+                onClick={openModal}
+                className="text-gray-900 bg-sky-100 hover:bg-sky-100 w-[400px] h-[40px] p-4 rounded transition-transform transform hover:-translate-y-2 hover:shadow-lg"
+              >
                 Squirtle
               </Button>
             </div>
             <div className="pokemonList-Item">
-              <Button className="text-gray-900 bg-sky-100 hover:bg-sky-100 w-[400px] h-[40px] p-4 rounded transition-transform transform hover:-translate-y-2 hover:shadow-lg">
+              <Button
+                onClick={openModal}
+                className="text-gray-900 bg-sky-100 hover:bg-sky-100 w-[400px] h-[40px] p-4 rounded transition-transform transform hover:-translate-y-2 hover:shadow-lg"
+              >
                 Wartortle
               </Button>
             </div>
             <div className="pokemonList-Item">
-              <Button className="text-gray-900 bg-sky-100 hover:bg-sky-100 w-[400px] h-[40px] p-4 rounded transition-transform transform hover:-translate-y-2 hover:shadow-lg">
+              <Button
+                onClick={openModal}
+                className="text-gray-900 bg-sky-100 hover:bg-sky-100 w-[400px] h-[40px] p-4 rounded transition-transform transform hover:-translate-y-2 hover:shadow-lg"
+              >
                 Blastoise
               </Button>
             </div>
 
             <div className="pokemonList-Item">
-              <Button className="text-gray-900 bg-sky-100 hover:bg-sky-100 w-[400px] h-[40px] p-4 rounded transition-transform transform hover:-translate-y-2 hover:shadow-lg">
+              <Button
+                onClick={openModal}
+                className="text-gray-900 bg-sky-100 hover:bg-sky-100 w-[400px] h-[40px] p-4 rounded transition-transform transform hover:-translate-y-2 hover:shadow-lg"
+              >
                 Caterpie
               </Button>
             </div>
             <div className="pokemonList-Item">
-              <Button className="text-gray-900 bg-sky-100 hover:bg-sky-100 w-[400px] h-[40px] p-4 rounded transition-transform transform hover:-translate-y-2 hover:shadow-lg">
+              <Button
+                onClick={openModal}
+                className="text-gray-900 bg-sky-100 hover:bg-sky-100 w-[400px] h-[40px] p-4 rounded transition-transform transform hover:-translate-y-2 hover:shadow-lg"
+              >
                 Metapod
               </Button>
             </div>
             <div className="pokemonList-Item">
-              <Button className="text-gray-900 bg-sky-100 hover:bg-sky-100 w-[400px] h-[40px] p-4 rounded transition-transform transform hover:-translate-y-2 hover:shadow-lg">
+              <Button
+                onClick={openModal}
+                className="text-gray-900 bg-sky-100 hover:bg-sky-100 w-[400px] h-[40px] p-4 rounded transition-transform transform hover:-translate-y-2 hover:shadow-lg"
+              >
                 Butterfree
               </Button>
             </div>
             <div className="pokemonList-Item">
-              <Button className="text-gray-900 bg-sky-100 hover:bg-sky-100 w-[400px] h-[40px] p-4 rounded transition-transform transform hover:-translate-y-2 hover:shadow-lg">
+              <Button
+                onClick={openModal}
+                className="text-gray-900 bg-sky-100 hover:bg-sky-100 w-[400px] h-[40px] p-4 rounded transition-transform transform hover:-translate-y-2 hover:shadow-lg"
+              >
                 Weedle
               </Button>
             </div>
             <div className="pokemonList-Item">
-              <Button className="text-gray-900 bg-sky-100 hover:bg-sky-100 w-[400px] h-[40px] p-4 rounded transition-transform transform hover:-translate-y-2 hover:shadow-lg">
+              <Button
+                onClick={openModal}
+                className="text-gray-900 bg-sky-100 hover:bg-sky-100 w-[400px] h-[40px] p-4 rounded transition-transform transform hover:-translate-y-2 hover:shadow-lg"
+              >
                 Kakuna
               </Button>
             </div>
             <div className="pokemonList-Item">
-              <Button className="text-gray-900 bg-sky-100 hover:bg-sky-100 w-[400px] h-[40px] p-4 rounded transition-transform transform hover:-translate-y-2 hover:shadow-lg">
+              <Button
+                onClick={openModal}
+                className="text-gray-900 bg-sky-100 hover:bg-sky-100 w-[400px] h-[40px] p-4 rounded transition-transform transform hover:-translate-y-2 hover:shadow-lg"
+              >
                 Beedrill
               </Button>
             </div>
             <div className="pokemonList-Item">
-              <Button className="text-gray-900 bg-sky-100 hover:bg-sky-100 w-[400px] h-[40px] p-4 rounded transition-transform transform hover:-translate-y-2 hover:shadow-lg">
+              <Button
+                onClick={openModal}
+                className="text-gray-900 bg-sky-100 hover:bg-sky-100 w-[400px] h-[40px] p-4 rounded transition-transform transform hover:-translate-y-2 hover:shadow-lg"
+              >
                 Pidgey
               </Button>
             </div>
             <div className="pokemonList-Item">
-              <Button className="text-gray-900 bg-sky-100 hover:bg-sky-100 w-[400px] h-[40px] p-4 rounded transition-transform transform hover:-translate-y-2 hover:shadow-lg">
+              <Button
+                onClick={openModal}
+                className="text-gray-900 bg-sky-100 hover:bg-sky-100 w-[400px] h-[40px] p-4 rounded transition-transform transform hover:-translate-y-2 hover:shadow-lg"
+              >
                 Pidgeotto
               </Button>
             </div>
             <div className="pokemonList-Item">
-              <Button className="text-gray-900 bg-sky-100 hover:bg-sky-100 w-[400px] h-[40px] p-4 rounded transition-transform transform hover:-translate-y-2 hover:shadow-lg">
+              <Button
+                onClick={openModal}
+                className="text-gray-900 bg-sky-100 hover:bg-sky-100 w-[400px] h-[40px] p-4 rounded transition-transform transform hover:-translate-y-2 hover:shadow-lg"
+              >
                 Pidgeot
               </Button>
             </div>
             <div className="pokemonList-Item">
-              <Button className="text-gray-900 bg-sky-100 hover:bg-sky-100 w-[400px] h-[40px] p-4 rounded transition-transform transform hover:-translate-y-2 hover:shadow-lg">
+              <Button
+                onClick={openModal}
+                className="text-gray-900 bg-sky-100 hover:bg-sky-100 w-[400px] h-[40px] p-4 rounded transition-transform transform hover:-translate-y-2 hover:shadow-lg"
+              >
                 Rattata
               </Button>
             </div>
             <div className="pokemonList-Item">
-              <Button className="text-gray-900 bg-sky-100 hover:bg-sky-100 w-[400px] h-[40px] p-4 rounded transition-transform transform hover:-translate-y-2 hover:shadow-lg">
+              <Button
+                onClick={openModal}
+                className="text-gray-900 bg-sky-100 hover:bg-sky-100 w-[400px] h-[40px] p-4 rounded transition-transform transform hover:-translate-y-2 hover:shadow-lg"
+              >
                 Raticate
               </Button>
             </div>
             <div className="pokemonList-Item">
-              <Button className="text-gray-900 bg-sky-100 hover:bg-sky-100 w-[400px] h-[40px] p-4 rounded transition-transform transform hover:-translate-y-2 hover:shadow-lg">
+              <Button
+                onClick={openModal}
+                className="text-gray-900 bg-sky-100 hover:bg-sky-100 w-[400px] h-[40px] p-4 rounded transition-transform transform hover:-translate-y-2 hover:shadow-lg"
+              >
                 Spearow
               </Button>
             </div>
             <div className="pokemonList-Item">
-              <Button className="text-gray-900 bg-sky-100 hover:bg-sky-100 w-[400px] h-[40px] p-4 rounded transition-transform transform hover:-translate-y-2 hover:shadow-lg">
+              <Button
+                onClick={openModal}
+                className="text-gray-900 bg-sky-100 hover:bg-sky-100 w-[400px] h-[40px] p-4 rounded transition-transform transform hover:-translate-y-2 hover:shadow-lg"
+              >
                 Fearow
               </Button>
             </div>
             <div className="pokemonList-Item">
-              <Button className="text-gray-900 bg-sky-100 hover:bg-sky-100 w-[400px] h-[40px] p-4 rounded transition-transform transform hover:-translate-y-2 hover:shadow-lg">
+              <Button
+                onClick={openModal}
+                className="text-gray-900 bg-sky-100 hover:bg-sky-100 w-[400px] h-[40px] p-4 rounded transition-transform transform hover:-translate-y-2 hover:shadow-lg"
+              >
                 Ekans
               </Button>
             </div>
             <div className="pokemonList-Item">
-              <Button className="text-gray-900 bg-sky-100 hover:bg-sky-100 w-[400px] h-[40px] p-4 rounded transition-transform transform hover:-translate-y-2 hover:shadow-lg">
+              <Button
+                onClick={openModal}
+                className="text-gray-900 bg-sky-100 hover:bg-sky-100 w-[400px] h-[40px] p-4 rounded transition-transform transform hover:-translate-y-2 hover:shadow-lg"
+              >
                 Arbok
               </Button>
             </div>

@@ -1,21 +1,31 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 interface ModalProps {
   onClose: () => void;
 }
 
 const Modal: React.FC<ModalProps> = ({ onClose }) => {
+  // Impede o scroll da página principal enquanto o modal está aberto
+  useEffect(() => {
+    document.body.style.overflow = "hidden"; // Desabilita o scroll
+    return () => {
+      document.body.style.overflow = "auto"; // Habilita o scroll ao fechar o modal
+    };
+  }, []);
+
   return (
     <div>
       <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
         <div className="bg-white rounded-lg shadow-lg max-w-md w-full p-6 relative">
+          {/* Botão para fechar o modal */}
           <button
-            className="absolute top-2 right-2  hover:text-red-600"
-            onClick={() => setIsOpen(false)}
+            className="absolute top-2 right-2 hover:text-red-600"
+            onClick={onClose}
           >
             ❌
           </button>
 
+          {/* Conteúdo do Modal */}
           <div className="text-center">
             <span>#0002</span>
             <img
