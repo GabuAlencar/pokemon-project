@@ -1,8 +1,8 @@
 import { Button } from "./components/ui/button";
 import Logo from "/src/assets/pokemon-logo.svg";
 import { Input } from "./components/ui/input";
-import React, { useEffect, useState } from "react";
-import api from "./services/api.ts";
+import { useState } from "react";
+import axios from "axios";
 
 import {
   Select,
@@ -14,26 +14,7 @@ import {
 
 import Modal from "./components/ui/modal";
 
-interface Pokemon {
-  id: number;
-  name: string;
-  weight: number;
-  height: number;
-  type: string;
-}
-
 function App() {
-  const [item, setItem] = useState<item | null>(null);
-
-  useEffect(() => {
-    api
-      .get("/pokemon/ditto")
-      .then((response) => setItem(response.data))
-      .catch((err) => {
-        console.error("Ops! Ocorreu um erro: " + err);
-      });
-  }, []);
-
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   const openModal = (): void => {

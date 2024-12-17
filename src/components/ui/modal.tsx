@@ -5,11 +5,10 @@ interface ModalProps {
 }
 
 const Modal: React.FC<ModalProps> = ({ onClose }) => {
-  // Impede o scroll da página principal enquanto o modal está aberto
   useEffect(() => {
-    document.body.style.overflow = "hidden"; // Desabilita o scroll
+    document.body.style.overflow = "hidden";
     return () => {
-      document.body.style.overflow = "auto"; // Habilita o scroll ao fechar o modal
+      document.body.style.overflow = "auto";
     };
   }, []);
 
